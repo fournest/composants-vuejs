@@ -2,16 +2,17 @@
 import HelloWorld from './components/HelloWorld.vue'
 import ButtonCounter from './components/ButtonCounter.vue'
 import Card from './components/Card.vue'
-import HomeComponent from './components/Home.vue';
-import AboutComponent from './components/About.vue';
-import ContactComponent from './components/Contact.vue';
-import { ref } from 'vue'
+import Home from './components/Home.vue';
+import About from './components/About.vue';
+import Contact from './components/Contact.vue';
+import { ref, shallowRef } from 'vue'
+
 const counter = ref(0);
 function increment() {
   counter.value++
 }
 
-const componentName = ref('');
+const componentName = shallowRef(Home);
 
 </script>
 
@@ -40,9 +41,9 @@ const componentName = ref('');
     <h2>Application de Composants Dynamiques</h2>
     <br>
     <nav>
-      <button @click="componentName = 'HomeComponent'">Accueil</button>
-      <button @click="componentName = 'AboutComponent'">À propos</button>
-      <button @click="componentName = 'ContactComponent'">Contact</button>
+      <button @click="componentName = Home">Accueil</button>
+      <button @click="componentName = About">À propos</button>
+      <button @click="componentName = Contact">Contact</button>
     </nav>
     <br>
     <main>
@@ -59,6 +60,13 @@ const componentName = ref('');
 
 
 <style scoped>
+
+#app {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
 nav {
   display: flex;
   margin-bottom: 30px;
